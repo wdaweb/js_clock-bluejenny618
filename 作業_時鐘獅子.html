@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abel&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #bg{
+            width: 1120px;
+            height: 951px;
+            background: url(./作業/images/獅子時鐘\ 2-07.png);
+            margin: auto;
+            position: relative;
+        }
+        
+        #clock{
+            width: 460px;
+            height: 483px;
+            background:url(./作業/images/獅子時鐘\ 2-12.png);
+            border-radius: 0%;
+            bottom: -20%;
+            right: 2%;
+            margin: auto;
+            position: relative;
+        }
+
+        #hour{
+            width: 122px;
+            height: 77px;
+            border-radius: 0;
+            /*background: url(./作業/images/獅子時鐘\ 2-05.png) no-repeat;
+            background-size: 50px 50px;*/
+
+            width: 40%;
+            height: 7px;
+            border-radius: 5px;
+            /*background: rgb(191, 233, 235);*/ 
+            position: absolute;
+            top: calc(35% - 2px);
+            left: 50%;
+            transform-origin: left center;
+            z-index: 1;
+        }
+
+        #minute{
+            width: 50%;
+            height: 67px;
+            border-radius: 0;
+             /*width: 45%;
+            height: 7px;
+            border-radius: 5px;
+            background: rgb(60, 109, 177); */
+            position: absolute;
+            top: calc(35% - 2px);
+            left: 50%;     
+            transform-origin: left center;
+            z-index: 1; 
+        }
+
+        #second{
+            width: 45%;
+            height: 2px;
+            border-radius: 2px;
+            /* background: url(./作業/images/獅子時鐘\ 2-03.png); */
+            background: rgb(247, 242, 124);
+            position: absolute;
+            top: calc(35% - 2px);
+            left: 50%;
+            transform-origin: left center;
+            z-index: 1; 
+        }
+
+        #m{
+            width: 1.49px;
+            height: 0.98px;
+            /* background: url(./作業/images/獅子時鐘\ 2-07.png); */
+            top: calc(-75% - 19px);
+            left: -13%;
+            /* top: calc(30% - 8px);
+            left: -11.5%; */
+            margin: auto;
+            position: relative;
+            z-index: 9999;
+            
+        }
+
+        #w{
+            width: 10px;
+            height: 10px;
+            
+            top: calc(63% - 3px);
+            left: 30%;
+            margin: auto;
+            position: relative;
+            /* z-index: 9999; */
+            
+        }
+
+        #b{
+            width: 10px;
+            height: 10px;
+            
+            top: calc(68% - 2px);
+            left: -18%;
+            margin: auto;
+            position: relative;
+            /* z-index: 9999; */
+            
+        }
+
+        #face{
+            width: 50px;
+            height: 500px;
+            
+            top: calc(5% + 0px);
+            left: -30%;
+            margin: auto;
+            position: relative;
+            /* z-index: 9999; */
+            
+        }
+
+        #momo{
+            width: 10px;
+            height: 10px;
+            
+            top: calc(-5% - 2px);
+            left: -50%;
+            margin: auto;
+            position: relative;
+            /* z-index: 9999; */
+        
+        }
+
+    </style>
+</head>
+<body onload="ShowTime()">
+
+    <form id="form1" runat="server" style="font-family: 'Noto Sans TC', sans-serif; font-weight:bold; color:#35a0ca; font-size:25px; position:absolutr;text-align: center;">
+        <div id = "showbox"></div>
+    </form>
+
+  <div id="bg">
+    <div id="clock">
+        
+        
+        
+        <div id ="hour"><img src="作業/images/獅子時鐘 2-05.png" width="70" height="50" style="float: right;"></div>
+        <div id ="minute"><img src="作業/images/獅子時鐘 -06.png" width="50" height="40" style="float: right;"></div>
+        <div id ="second"></div>
+        
+        <div id="w"><img src="./作業/images/獅子時鐘-2-09.gif"></div>
+        <div id="b"><img src="./作業/images/獅子時鐘 2-10.png"></div>
+        <div id="momo"><img src="./作業/images/獅子時鐘-2-03.gif"></div>
+        <div id="face"><img src="./作業/images/獅子時鐘 2-11.png"></div>
+        <div id="m"><img src="./作業/images/鼻子-08.png"></div>
+    </div>
+</div>
+    <script>
+
+        function ShowTime()
+        {
+            var NowDate = new Date();
+            var d = NowDate.getDay();
+            var dayNames = new Array("Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat");
+            document.getElementById('showbox').innerHTML = NowDate.toLocaleString() + ' (' + dayNames[d] + ')';
+            setTimeout('ShowTime()', 1000);
+        }
+       
+        const hour = document.getElementById('hour')
+        const minute = document.getElementById('minute')
+        const second = document.getElementById('second')
+        const update = () =>{
+            const now = new Date()
+            hour.style.transform = `rotate(${now.getHours()*30-90}deg)`
+            minute.style.transform = `rotate(${now.getMinutes()*6-90}deg)`
+            second.style.transform = `rotate(${now.getSeconds()*6-90}deg)`
+        }
+        setInterval(update, 1000)
+        update()
+
+    </script>
+</body>
+</html>
